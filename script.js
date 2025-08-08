@@ -7,6 +7,7 @@ var contactos=[
   { nombre: "ana ortega", telefono: "+584143415005"}
 ]
 
+const div=document.getElementById("div")
 const btnBuscar= document.querySelector("#btnBuscar")
 
 btnBuscar.addEventListener("click", () => {
@@ -17,10 +18,15 @@ btnBuscar.addEventListener("click", () => {
   }
   let contactosFiltrados = contactos.filter((contacto) => contacto.nombre.includes(nombreIngresado))
   if(contactosFiltrados.length===0)
-    console.log("No hay coincidencaas ")
+    alert("No hay coincidencias")
   else if (contactosFiltrados.length>=1)
-    for(let contacto of contactosFiltrados)
-    console.log(contacto.nombre + " " + contacto.telefono)
+    div.innerHTML=" "
+    for(let contacto of contactosFiltrados){
+    const contactosMostrados=document.createElement("li")
+    contactosMostrados.innerHTML=contacto.nombre + " " + contacto.telefono
+    contactosMostrados.classList.add('estilos')
+    div.appendChild(contactosMostrados)
+    }
   }
 );
 

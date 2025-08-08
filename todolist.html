@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
-<body>
-  <h1>Lista de tareas</h1>
-  <section id="padre">
-    <label for="">Inserte una nueva tarea</label>
-    <input type="text" id="inputUsuario">
-    <button type="button" id="btnAgregar">agregar</button>
-    <button class="btnEliminar">eliminar</button>
-    <div id="divCompleto" style="display: none;">
-      <button class="btnEliminar">eliminar</button>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./todolist.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  </head>
+  <body class="flex flex-col justify-center h-screen items-center gap-[10px]">
+    <h1 class="font-bold">To do list</h1>
+    <div class="bg-orange-100 p-[8px] flex gap-[10px] justify-between rounded-full">
+      <input type="text" placeholder="Ingresa una nueva tarea" id="inputUser">
+      <button type="button" class="bg-white p-[5px] rounded-full" id="btnEnviar" onclick="agregarTarea()"><i class="fa-solid fa-plus"></i></button>
     </div>
-  </section><br>
+    <div id="divPadre">  
+    </div>
   <script src="./todolist.js"></script>
-</body>
-</html>
+  <script src="https://kit.fontawesome.com/2acc38f85e.js" crossorigin="anonymous"></script>
+  </body>
+  </html>

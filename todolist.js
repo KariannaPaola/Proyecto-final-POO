@@ -1,21 +1,35 @@
-const btnEliminar= document.getElementsByClassName("btnEliminar")
-const tarea=document.getElementById("tarea")
-const btnAgregar= document.getElementById("btnAgregar")
-const divCompleto=document.getElementById("divCompleto")
+const btnEnviar=document.getElementById("btnEnviar");
+const divPadre=document.getElementById("divPadre");
+const nuevaTareaRegex=  /^[a-zA-Z0-9 ]+$/;
 
-const padre=document.getElementById("padre")
+var tareas=[]
 
-btnAgregar.addEventListener("click", () => {
-  const inputTarea=document.getElementById("inputUsuario").value
-  const nuevaTarea= document.createElement('div');
-  nuevaTarea.innerHTML=divCompleto.innerHTML + inputTarea;
-  padre.appendChild(nuevaTarea);
-});
+function agregarTarea(){
+  const inputUser=document.getElementById("inputUser").value
+  if(inputUser==""){
+    alert("El campo no debe estar vacio")
+  }
+  else if(nuevaTareaRegex.test(inputUser)==false){
+    alert("Ingrese una tarea válida")
+  }
+  else
+    tareas.push(inputUser)
+    mostrarTarea()
+}
 
-btnEliminar[0].addEventListener("click", () => {
-  console.log("hola")
-});
+function eliminar(index){
+  tareas.splice(index, 1);
+  mostrarTarea()
+}
 
-
-
+function mostrarTarea(){
+  divPadre.textContent=""
+  for(let tarea of tareas){
+    console.log(tareas)
+    const nuevaTarea = document.createElement("p");
+    nuevaTarea.innerHTML =`<input type="checkbox"> ${tarea} <button onclick="eliminar(${tareas.indexOf(tarea)})"><i class="fa-solid fa-trash"></i></button>`; 
+    nuevaTarea.classList.add('centrado')
+    divPadre.appendChild(nuevaTarea);
+  }
+}
 
